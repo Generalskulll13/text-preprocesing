@@ -1,4 +1,30 @@
 Numero de observaciones :: 81
 Numbero de columnas :: 3911
+Numero de unos en la matriz: 9946
+Numero de 0 en la matriz: 306764
+Sparse of matrix: 96.85958763537622
+Density of matrix la matriz: 3.1404123646237885
+Resultados para País: 
+tn : 6 fp : 22 fn : 0 tp : 13
+Resultados para Entretención: 
+tn : 35 fp : 0 fn : 6 tp : 0
+Resultados para Mundo: 
+tn : 34 fp : 0 fn : 7 tp : 0
+Resultados para Otros: 
+tn : 25 fp : 1 fn : 10 tp : 5
 Multinomial Logistic regression Train Accuracy :: 1.0
-Multinomial Logistic regression Test Accuracy :: 0.3902439024390244
+Multinomial Logistic regression Test Accuracy :: 0.43902439024390244
+Numero de unos en la matriz: 9946
+Numero de 0 en la matriz: 306764
+Sparse of matrix: 96.85958763537622
+Density of matrix la matriz: 3.1404123646237885
+Resultados para País: 
+tn : 18 fp : 5 fn : 5 tp : 13
+Resultados para Entretención: 
+tn : 34 fp : 1 fn : 5 tp : 1
+Resultados para Mundo: 
+tn : 32 fp : 5 fn : 0 tp : 4
+Resultados para Otros: 
+tn : 22 fp : 6 fn : 7 tp : 6
+Multinomial Logistic regression Train Accuracy :: 1.0
+Multinomial Logistic regression Test Accuracy :: 0.5853658536585366
