@@ -23,10 +23,22 @@ def lemmatize_words(words,archivo1):
 	#	lem_words.append(lem_word)
 	archivo1.write(str(new_words))
 	return new_words
-def tokenize(text):
-	texto2=text.replace('Michael Jackson','michaeljackson')
-	texto2=texto2.replace('Francisco Solar','franciscosolar')
-	texto2=texto2.replace('Chantal Gayoso','chantalgayoso')
+def construye_diccionario(file):
+	diccionario=[]
+	for lineas in file.readlines():
+		linea=lineas.split()
+		linea[0]=linea[0].replace('_',' ')
+		linea[0]=linea[0].replace('\n','')
+		linea[1]=linea[1].replace('_',' ')
+		linea[1]=linea[1].replace('\n',' ')
+		diccionario.append(linea)
+	return diccionario
+
+
+def tokenize(text,diccionario):
+	texto2=text
+	for palabra in diccionario:
+		texto2=texto2.replace(palabra[0],palabra[1])
 	words = nltk.word_tokenize(texto2)
 	return words
 def to_lowercase(words):
@@ -85,7 +97,8 @@ archivo4=open('prueba de matriz.txt','w')
 archivo5=open('listadengrmas.txt','w')
 archivo6=open('dataset.csv','w')
 archivo7=open('listadepalabras.txt','w')
-with open('lemmatization-es.txt', 'rb') as fichero:
+archivo8=open("diccionarioespañol.txt",'r')
+with open('diccionariolemmatization.txt', 'rb') as fichero:
 	datos = (fichero.read().decode('utf8').replace(u'\r', u'').split(u'\n'))
 	datos = ([avance.split(u'\t') for avance in datos])
 for avance in datos:
@@ -93,8 +106,9 @@ for avance in datos:
       lemmaDiccionario[avance[1]] = avance[0]
 listadenoticias = []
 listadengrmas=[]
+diccionarios=construye_diccionario(archivo8)
 for linea in archivo.readlines():
-	lineas= tokenize(linea)
+	lineas= tokenize(linea,diccionarios)
 	salida2=identificar_stopwords(lineas)
 	lineas= normalize(lineas)
 	lineas = remove_stopwords(lineas)
@@ -118,8 +132,6 @@ for indice in listadengrmas:
         lista_nueva.append(indice)
     	
 archivo5.write(str(listadengrmas))
-print(len(lista_nueva))
-print(len(listadengrmas))
 for palabra in lista_nueva:
 	archivo7.write(palabra)
 	archivo7.write('\n')

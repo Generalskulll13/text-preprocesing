@@ -1,0 +1,4 @@
+Numero de observaciones :: 81
+Numbero de columnas :: 3911
+Multinomial Logistic regression Train Accuracy :: 1.0
+Multinomial Logistic regression Test Accuracy :: 0.3902439024390244

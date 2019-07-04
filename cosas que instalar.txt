@@ -1,0 +1,5 @@
+pip install -U spacy
+sudo easy_install pip
+pip install --user -U nltk
+pip install --user -U numpy
+pip install -U scikit-learn
