@@ -18,7 +18,7 @@ from sklearn.metrics import multilabel_confusion_matrix
 #py.sign_in('Your_ployly_username', 'API_key')
 
 # Dataset Path
-DATASET_PATH = "../dataset.csv"
+DATASET_PATH = "../flujo_estandar/dataset.csv"
 
 def tokenize(text):
     words = nltk.word_tokenize(text)
@@ -26,14 +26,14 @@ def tokenize(text):
 
 def main():
     text_data_headers = []
-    archivo1=open("listadepalabras.txt",'r')
-    archivo2=open("resultados.txt",'w')
+    archivo1=open("flujo_estandar/listadepalabras.txt",'r')
+    archivo2=open("flujo_estandar/resultados.txt",'w')
     for linea in archivo1.readlines():
         text_data_headers.append(tokenize(linea)[0])
 
     
 
-    text_data = pd.read_csv('dataset.csv', names=text_data_headers)
+    text_data = pd.read_csv('flujo_estandar/dataset.csv', names=text_data_headers)
     archivo2.write("Numero de observaciones :: "+ str(len(text_data.index)))
     archivo2.write('\n')
     archivo2.write("Numbero de columnas :: "+ str(len(text_data.columns)))

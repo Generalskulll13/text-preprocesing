@@ -89,16 +89,16 @@ def normalize(words):
 def ngram(words,n):
 	output = list(ngrams(words, n))
 	return output
-archivo=open("LLNcooperativa.txt",'r')
-archivo1=open("lema1.txt",'w')
-archivo2=open('prueba final.txt','w')
-archivo3=open('stopwords final.txt','w')
-archivo4=open('prueba de matriz.txt','w')
-archivo5=open('listadengrmas.txt','w')
-archivo6=open('dataset.csv','w')
-archivo7=open('listadepalabras.txt','w')
-archivo8=open("diccionarioespañol.txt",'r')
-with open('diccionariolemmatization.txt', 'rb') as fichero:
+archivo=open("pruebas/LLNcooperativa.txt",'r')
+archivo1=open("pruebas/lema1.txt",'w')
+archivo2=open('pruebas/prueba final.txt','w')
+archivo3=open('pruebas/stopwords final.txt','w')
+archivo4=open('pruebas/prueba de matriz.txt','w')
+archivo5=open('pruebas/listadengrmas.txt','w')
+archivo6=open('pruebas/dataset.csv','w')
+archivo7=open('pruebas/listadepalabras.txt','w')
+archivo8=open("pruebas/diccionarioespañol.txt",'r')
+with open('pruebas/diccionariolemmatization.txt', 'rb') as fichero:
 	datos = (fichero.read().decode('utf8').replace(u'\r', u'').split(u'\n'))
 	datos = ([avance.split(u'\t') for avance in datos])
 for avance in datos:
@@ -135,7 +135,7 @@ archivo5.write(str(listadengrmas))
 for palabra in lista_nueva:
 	archivo7.write(palabra)
 	archivo7.write('\n')
-topico=open("topicos.txt",'r')
+topico=open("pruebas/topicos.txt",'r')
 topicos=[]
 for linea in topico.readlines():
 	topicos.append(linea)

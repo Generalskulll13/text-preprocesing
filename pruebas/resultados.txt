@@ -5,26 +5,26 @@ Numero de 0 en la matriz: 306764
 Sparse of matrix: 96.85958763537622
 Density of matrix la matriz: 3.1404123646237885
 Resultados para País: 
-tn : 6 fp : 22 fn : 0 tp : 13
+tn : 0 fp : 13 fn : 1 tp : 27
 Resultados para Entretención: 
-tn : 35 fp : 0 fn : 6 tp : 0
+tn : 33 fp : 1 fn : 7 tp : 0
 Resultados para Mundo: 
-tn : 34 fp : 0 fn : 7 tp : 0
+tn : 35 fp : 0 fn : 6 tp : 0
 Resultados para Otros: 
-tn : 25 fp : 1 fn : 10 tp : 5
+tn : 41 fp : 0 fn : 0 tp : 0
 Multinomial Logistic regression Train Accuracy :: 1.0
-Multinomial Logistic regression Test Accuracy :: 0.43902439024390244
+Multinomial Logistic regression Test Accuracy :: 0.6585365853658537
 Numero de unos en la matriz: 9946
 Numero de 0 en la matriz: 306764
 Sparse of matrix: 96.85958763537622
 Density of matrix la matriz: 3.1404123646237885
 Resultados para País: 
-tn : 18 fp : 5 fn : 5 tp : 13
+tn : 0 fp : 19 fn : 0 tp : 22
 Resultados para Entretención: 
-tn : 34 fp : 1 fn : 5 tp : 1
+tn : 30 fp : 0 fn : 11 tp : 0
 Resultados para Mundo: 
-tn : 32 fp : 5 fn : 0 tp : 4
+tn : 34 fp : 0 fn : 7 tp : 0
 Resultados para Otros: 
-tn : 22 fp : 6 fn : 7 tp : 6
+tn : 40 fp : 0 fn : 1 tp : 0
 Multinomial Logistic regression Train Accuracy :: 1.0
-Multinomial Logistic regression Test Accuracy :: 0.5853658536585366
+Multinomial Logistic regression Test Accuracy :: 0.5365853658536586

@@ -26,14 +26,14 @@ def tokenize(text):
 
 def main():
     text_data_headers = []
-    archivo1=open("listadepalabras.txt",'r')
-    archivo2=open("resultados.txt",'w')
+    archivo1=open("Flujo_experimental_2/listadepalabras.txt",'r')
+    archivo2=open("Flujo_experimental_2/resultados.txt",'w')
     for linea in archivo1.readlines():
         text_data_headers.append(tokenize(linea)[0])
 
     
 
-    text_data = pd.read_csv('dataset.csv', names=text_data_headers)
+    text_data = pd.read_csv('Flujo_experimental_2/dataset.csv', names=text_data_headers)
     archivo2.write("Numero de observaciones :: "+ str(len(text_data.index)))
     archivo2.write('\n')
     archivo2.write("Numbero de columnas :: "+ str(len(text_data.columns)))

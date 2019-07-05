@@ -15,9 +15,9 @@ def tokenize(text):
 	words = nltk.word_tokenize(texto2)
 	return words
 
-archivo=open("LLNcooperativa.txt",'r')
-archivo6=open('dataset.csv','w')
-archivo7=open('listadepalabras.txt','w')
+archivo=open("texto_sin_preprocesar/LLNcooperativa.txt",'r')
+archivo6=open('texto_sin_preprocesar/dataset.csv','w')
+archivo7=open('texto_sin_preprocesar/listadepalabras.txt','w')
 listadenoticias = []
 listadengrmas=[]
 for linea in archivo.readlines():
@@ -36,7 +36,7 @@ for indice in listadengrmas:
 for palabra in lista_nueva:
 	archivo7.write(palabra)
 	archivo7.write('\n')
-topico=open("topicos.txt",'r')
+topico=open("texto_sin_preprocesar/topicos.txt",'r')
 topicos=[]
 for linea in topico.readlines():
 	topicos.append(linea)
