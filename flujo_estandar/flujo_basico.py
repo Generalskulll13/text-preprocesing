@@ -73,14 +73,14 @@ for linea in archivo.readlines():
 	lineas= stem_words(lineas)
 	#lineas= ngram(lineas,3)
 	listadenoticias.append(lineas)
-
 for matriz in listadenoticias:
 	for a1 in matriz:
 		listadengrmas.append(a1)
-lista_nueva = listadengrmas.unique()
-
+lista_nueva=[]
+for indice in listadengrmas:
+    if indice not in lista_nueva:
+        lista_nueva.append(indice)
 print(len(lista_nueva))
-
 print(len(listadengrmas))
 for palabra in lista_nueva:
 	archivo7.write(palabra)
