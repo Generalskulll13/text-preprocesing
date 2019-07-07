@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+from pruebas import flujo basico1
 import os
-#os.system( "python3 flujo_estandar/flujo_basico.py")
+os.system( "python3 flujo_estandar/flujo_basico.py")
 print("termine de preprocesar el flujo estandar")
-#os.system( "python3 flujo_estandar/entropiamaxima.py")
+os.system( "python3 flujo_estandar/entropiamaxima.py")
 print("termine de analisar el flujo estandar")
 os.system( "python3 Flujo_experimental_1/flujo_basico1.py")
 print("termine de preprocesar el flujo experimental 1")
