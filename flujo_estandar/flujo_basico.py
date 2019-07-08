@@ -3,12 +3,15 @@ import nltk.data
 import re, string, unicodedata
 import nltk
 import spacy
+import threading
+import time
 from nltk import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
 from nltk.util import ngrams
 from nltk.stem.snowball import SnowballStemmer
 import spacy
-
+cuentahebra=0
+listadenoticias = []
 def lemmatize_words(words):
 	nlp = spacy.load('es_core_news_md')
 	text1=" ".join(words)
@@ -59,51 +62,87 @@ def normalize(words):
 def ngram(words,n):
 	output = list(ngrams(words, n))
 	return output
-archivo=open("flujo_estandar/LLNcooperativa.txt",'r')
-archivo6=open('flujo_estandar/dataset.csv','w')
-archivo7=open('flujo_estandar/listadepalabras.txt','w')
-listadenoticias = []
-listadengrmas=[]
-contador=0
-for linea in archivo.readlines():
+class myThread (threading.Thread):
+	def __init__(self, threadID, name, counter,linea,nhebra):
+		threading.Thread.__init__(self)
+		self.threadID = threadID
+		self.name = name
+		self.counter = counter
+		self.linea=linea
+		self.nhebra=nhebra
+	def run(self):
+		print ("Starting " + self.name)
+		multithread(self.linea, self.nhebra)
+    	# Free lock to release next thread
+
+def multithread(linea,nhebra):
+	global listadenoticias
+	global cuentahebra
 	lineas= tokenize(linea)
 	lineas= normalize(lineas)
 	lineas = remove_stopwords(lineas)
 	lineas= lemmatize_words(lineas)
 	lineas= stem_words(lineas)
+	print("entre a la hebra")
+	print(str(nhebra))
 	#lineas= ngram(lineas,3)
-	listadenoticias.append(lineas)
-for matriz in listadenoticias:
-	for a1 in matriz:
-		listadengrmas.append(a1)
-lista_nueva=[]
-for indice in listadengrmas:
-    if indice not in lista_nueva:
-        lista_nueva.append(indice)
-print(len(lista_nueva))
-print(len(listadengrmas))
-for palabra in lista_nueva:
-	archivo7.write(palabra)
-	archivo7.write('\n')
-topico=open("flujo_estandar/topicos.txt",'r')
-topicos=[]
-for linea in topico.readlines():
-	topicos.append(linea)
-contador=0;
-cuentalinea=1
+	while nhebra!= cuentahebra:
+		a=1
+	listadenoticias.append(lineas)	
+	
+	cuentahebra = cuentahebra+1
+	return listadenoticias
+def main():
+	inicio=time.time()
+	archivo=open("flujo_estandar/LLNcooperativa.txt",'r')
+	archivo6=open('flujo_estandar/dataset.csv','w')
+	archivo7=open('flujo_estandar/listadepalabras.txt','w')
+	listadengrmas=[]
+	contador=0
+	nhebra=0
+	threads = []
+	for linea in archivo.readlines():
+		thread1 = myThread(1, "Thread", 1,linea,nhebra)
+		thread1.start()
+		nhebra=nhebra+1
+		threads.append(thread1)
+	for t in threads:
+   		t.join()
 
-for noticia in listadenoticias:
-	archivo6.write(str(cuentalinea))
-	archivo6.write(',')
-	for ngr in lista_nueva:
-		if ngr in noticia:
-			archivo6.write('1,')
-		else:
-			archivo6.write('0,')
-	archivo6.write(topicos[contador])
-	cuentalinea=cuentalinea+1
-	contador=contador+1
-archivo.close()
-archivo6.close()
+	for matriz in listadenoticias:
+		for a1 in matriz:
+			listadengrmas.append(a1)
+	lista_nueva=[]
+	for indice in listadengrmas:
+		if indice not in lista_nueva:
+			listadengrmas.append(indice)
 
+	print(len(lista_nueva))
+	print(len(listadengrmas))
+	for palabra in lista_nueva:
+		archivo7.write(palabra)
+		archivo7.write('\n')
+	topico=open("flujo_estandar/topicos.txt",'r')
+	topicos=[]
+	for linea in topico.readlines():
+		topicos.append(linea)
+	contador=0;
+	cuentalinea=1
+	
+	for noticia in listadenoticias:
+		archivo6.write(str(cuentalinea))
+		archivo6.write(',')
+		for ngr in lista_nueva:
+			if ngr in noticia:
+				archivo6.write('1,')
+			else:
+				archivo6.write('0,')
+		archivo6.write(topicos[contador])
+		cuentalinea=cuentalinea+1
+		contador=contador+1
+	archivo.close()
+	archivo6.close()
+	print(str(time.time()-inicio))
+if __name__ == "__main__":
+    main()
 
