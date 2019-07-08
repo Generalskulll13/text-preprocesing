@@ -91,7 +91,7 @@ def multithread(linea,nhebra):
 	while nhebra!= cuentahebra:
 		
 
-	listadenoticias.append(lineas)	
+	listadenoticias.append(lineas)
 	print(len(listadenoticias))
 	cuentahebra = cuentahebra+1
 	return listadenoticias
