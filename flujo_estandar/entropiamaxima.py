@@ -34,6 +34,7 @@ def main():
     
 
     text_data = pd.read_csv('flujo_estandar/dataset.csv', names=text_data_headers)
+    print("Numero de observaciones :: "+ str(len(text_data.index)))
     archivo2.write("Numero de observaciones :: "+ str(len(text_data.index)))
     archivo2.write('\n')
     archivo2.write("Numbero de columnas :: "+ str(len(text_data.columns)))
