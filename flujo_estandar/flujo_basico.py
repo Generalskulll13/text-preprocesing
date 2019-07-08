@@ -89,10 +89,10 @@ def multithread(linea,nhebra):
 	#lineas= ngram(lineas,3)
 	print("hola")
 	while nhebra!= cuentahebra:
-		print("hola")
+		
 
 	listadenoticias.append(lineas)	
-	
+	print(len(listadenoticias))
 	cuentahebra = cuentahebra+1
 	return listadenoticias
 def main():
