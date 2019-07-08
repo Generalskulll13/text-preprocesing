@@ -85,6 +85,7 @@ def multithread(linea,nhebra):
 	lineas= stem_words(lineas)
 	print("entre a la hebra")
 	print(str(nhebra))
+	print(str(cuentahebra))
 	#lineas= ngram(lineas,3)
 	print("hola")
 	while nhebra!= cuentahebra:
