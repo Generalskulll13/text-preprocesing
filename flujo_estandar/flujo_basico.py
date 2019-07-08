@@ -96,6 +96,7 @@ def multithread(linea,nhebra):
 	cuentahebra = cuentahebra+1
 	return listadenoticias
 def main():
+	global listadenoticias
 	inicio=time.time()
 	archivo=open("flujo_estandar/LLNcooperativa.txt",'r')
 	archivo6=open('flujo_estandar/dataset.csv','w')
