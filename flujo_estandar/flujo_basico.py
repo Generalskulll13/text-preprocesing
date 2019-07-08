@@ -85,17 +85,17 @@ archivo6=open('Flujo_experimental_1/dataset.csv','w')
 archivo7=open('Flujo_experimental_1/listadepalabras.txt','w')
 listadenoticias = []
 listadengrmas=[]
-
+cuentaproduccion=0
 for linea in archivo.readlines():
 	lineas= tokenize(linea)
-	salida2=identificar_stopwords(lineas)
 	lineas= normalize(lineas)
 	lineas = remove_stopwords(lineas)
 	lineas= lemmatize_words(lineas)
 	lineas= stem_words(lineas)
 	#lineas= ngram(lineas,3)
 	listadenoticias.append(lineas)
-	print("estoy produciendo")
+	print(str(cuentaproduccion))
+	cuentaproduccion=cuentaproduccion+1
 for matriz in listadenoticias:
 	for a1 in matriz:
 		listadengrmas.append(a1)
