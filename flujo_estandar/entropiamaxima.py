@@ -26,6 +26,7 @@ def tokenize(text):
 
 def main():
     text_data_headers = []
+    print("hola estoy haciendo algo")
     archivo1=open("flujo_estandar/listadepalabras.txt",'r')
     archivo2=open("flujo_estandar/resultados.txt",'w')
     for linea in archivo1.readlines():
