@@ -71,16 +71,12 @@ class myThread (threading.Thread):
 		self.linea=linea
 		self.nhebra=nhebra
 	def run(self):
-		print ("Starting " + self.name)
 		multithread(self.linea, self.nhebra)
     	# Free lock to release next thread
 
 def multithread(linea,nhebra):
 	global listadenoticias
 	global cuentahebra
-	lineas= tokenize(linea)
-	lineas= normalize(lineas)
-	lineas = remove_stopwords(lineas)
 	lineas= lemmatize_words(lineas)
 	lineas= stem_words(lineas)
 	print("entre a la hebra")
@@ -106,7 +102,10 @@ def main():
 	nhebra=0
 	threads = []
 	for linea in archivo.readlines():
-		thread1 = myThread(1, "Thread", 1,linea,nhebra)
+		lineas= tokenize(linea)
+		lineas= normalize(lineas)
+		lineas = remove_stopwords(lineas)
+		thread1 = myThread(1, "Thread", 1,lineas,nhebra)
 		thread1.start()
 		nhebra=nhebra+1
 		threads.append(thread1)
