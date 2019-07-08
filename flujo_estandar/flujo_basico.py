@@ -12,8 +12,9 @@ from nltk.stem.snowball import SnowballStemmer
 import spacy
 cuentahebra=0
 listadenoticias = []
+nlp = spacy.load('es_core_news_md')
 def lemmatize_words(words):
-	nlp = spacy.load('es_core_news_md')
+	
 	text1=" ".join(words)
 	new_words=[]
 	for token in nlp(text1):
