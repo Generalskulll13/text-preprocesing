@@ -40,16 +40,19 @@ def main():
     archivo2.write('\n')
     archivo2.write("Numbero de columnas :: "+ str(len(text_data.columns)))
     archivo2.write('\n')
+    print("Numbero de columnas :: "+ str(len(text_data.columns)))
     #Train , Test data split
     train_x, test_x, train_y, test_y = train_test_split(text_data[text_data_headers[:-1]],
                                                         text_data[text_data_headers[-1]], train_size=0.5)
     # Train multi-classification model with logistic regression
+    print("termine de agendar train")
     text_data2=text_data.iloc[:,:-1]
     #numero de 1
     unos=text_data2.values.sum()
     suma=text_data2.size
     #numero de 0
     zeros=suma-unos
+    print("termine ")
     archivo2.write("Numero de unos en la matriz: "+str(unos))
     archivo2.write('\n')
     archivo2.write("Numero de 0 en la matriz: "+str(zeros))
@@ -62,6 +65,7 @@ def main():
 
     mul_lr = linear_model.LogisticRegression(multi_class='multinomial', solver='newton-cg').fit(train_x, train_y)
     tn = multilabel_confusion_matrix(test_y, mul_lr.predict(test_x),labels=[0,1,2,3] ).ravel()
+    print("termine mul_lr")
     archivo2.write("Resultados para País: \n")
     archivo2.write("tn : "+str(tn[0]))
     archivo2.write(" fp : "+str(tn[1]))
