@@ -77,7 +77,7 @@ class myThread (threading.Thread):
 def multithread(linea,nhebra):
 	global listadenoticias
 	global cuentahebra
-	lineas= lemmatize_words(lineas)
+	lineas= lemmatize_words(linea)
 	lineas= stem_words(lineas)
 	print("entre a la hebra")
 	print(str(nhebra))
