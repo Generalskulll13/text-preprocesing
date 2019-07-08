@@ -78,13 +78,13 @@ def multithread(linea,nhebra):
 	lineas= lemmatize_words(linea)
 	lineas= stem_words(lineas)
 	print("entre a la hebra")
-	print(str(cuentahebra))
 	#lineas= ngram(lineas,3)
-	print("hola")
+	global cuentahebra
 	while nhebra!= cuentahebra:
 		print(str(nhebra))
+		print(str(cuentahebra))
 	global listadenoticias
-	global cuentahebra
+
 	listadenoticias.append(lineas)
 	print(len(listadenoticias))
 	cuentahebra = cuentahebra+1
