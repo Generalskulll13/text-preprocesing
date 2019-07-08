@@ -63,23 +63,11 @@ def normalize(words):
 def ngram(words,n):
 	output = list(ngrams(words, n))
 	return output
-class myThread (threading.Thread):
-	def __init__(self, threadID, name, counter,linea,nhebra):
-		threading.Thread.__init__(self)
-		self.threadID = threadID
-		self.name = name
-		self.counter = counter
-		self.linea=linea
-		self.nhebra=nhebra
-	def run(self):
-		multithread(self.linea, self.nhebra)
-    	# Free lock to release next thread
 
 def multithread(linea,nhebra):
 	global cuentahebra
 	lineas= lemmatize_words(linea)
 	lineas= stem_words(lineas)
-	print("entre a la hebra")
 	#lineas= ngram(lineas,3)
 	
 	while nhebra!= cuentahebra:
@@ -105,13 +93,8 @@ def main():
 		lineas= tokenize(linea)
 		lineas= normalize(lineas)
 		lineas = remove_stopwords(lineas)
-		print("voy a crear la tread")
-		thread1 = myThread(1, "Thread", 1,lineas,nhebra)
-		thread1.start()
-		nhebra=nhebra+1
-		threads.append(thread1)
-	for t in threads:
-   		t.join()
+		lineas= lemmatize_words(linea)
+		lineas= stem_words(lineas)
 
 	for matriz in listadenoticias:
 		for a1 in matriz:
