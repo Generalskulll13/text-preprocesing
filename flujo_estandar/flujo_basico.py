@@ -12,7 +12,7 @@ nlp = spacy.load('es_core_news_md')
 def lemmatize(word):
    return lemmaDiccionario.get(word, word + u'')
    
-def lemmatize_words(words,archivo1):
+def lemmatize_words(words):
 	
 	text1=" ".join(words)
 	new_words=[]
@@ -94,13 +94,13 @@ for avance in datos:
       lemmaDiccionario[avance[1]] = avance[0]
 listadenoticias = []
 listadengrmas=[]
-diccionarios=construye_diccionario(archivo8)
+
 for linea in archivo.readlines():
 	lineas= tokenize(linea)
 	salida2=identificar_stopwords(lineas)
 	lineas= normalize(lineas)
 	lineas = remove_stopwords(lineas)
-	lineas= lemmatize_words(lineas,archivo1)
+	lineas= lemmatize_words(lineas)
 	lineas= stem_words(lineas)
 	#lineas= ngram(lineas,3)
 	listadenoticias.append(lineas)
