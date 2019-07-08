@@ -75,7 +75,6 @@ class myThread (threading.Thread):
     	# Free lock to release next thread
 
 def multithread(linea,nhebra):
-	global cuentahebra
 	lineas= lemmatize_words(linea)
 	lineas= stem_words(lineas)
 	print("entre a la hebra")
@@ -85,6 +84,7 @@ def multithread(linea,nhebra):
 	while nhebra!= cuentahebra:
 		print(str(nhebra))
 	global listadenoticias
+	global cuentahebra
 	listadenoticias.append(lineas)
 	print(len(listadenoticias))
 	cuentahebra = cuentahebra+1
