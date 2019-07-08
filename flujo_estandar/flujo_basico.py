@@ -10,8 +10,6 @@ from nltk.corpus import stopwords
 from nltk.util import ngrams
 from nltk.stem.snowball import SnowballStemmer
 import spacy
-cuentahebra=0
-listadenoticias = []
 nlp = spacy.load('es_core_news_md')
 def lemmatize_words(words):
 	
@@ -19,6 +17,7 @@ def lemmatize_words(words):
 	new_words=[]
 	for token in nlp(text1):
 		new_words.append(token.lemma_)
+	print(str (new_words))
 	return new_words
 def tokenize(text):
 	words = nltk.word_tokenize(text)
@@ -64,28 +63,13 @@ def ngram(words,n):
 	output = list(ngrams(words, n))
 	return output
 
-def multithread(linea,nhebra):
-	global cuentahebra
-	lineas= lemmatize_words(linea)
-	lineas= stem_words(lineas)
-	#lineas= ngram(lineas,3)
-	
-	while nhebra!= cuentahebra:
-		print(str(nhebra))
-		print(str(cuentahebra))
-	global listadenoticias
-
-	listadenoticias.append(lineas)
-	print(len(listadenoticias))
-	cuentahebra = cuentahebra+1
-	return listadenoticias
 def main():
-	global listadenoticias
 	inicio=time.time()
 	archivo=open("flujo_estandar/LLNcooperativa.txt",'r')
 	archivo6=open('flujo_estandar/dataset.csv','w')
 	archivo7=open('flujo_estandar/listadepalabras.txt','w')
 	listadengrmas=[]
+	listadenoticias = []
 	contador=0
 	nhebra=0
 	threads = []
@@ -93,12 +77,14 @@ def main():
 		lineas= tokenize(linea)
 		lineas= normalize(lineas)
 		lineas = remove_stopwords(lineas)
-		lineas= lemmatize_words(linea)
+		lineas= lemmatize_words(lineas)
 		lineas= stem_words(lineas)
-
+		listadenoticias.append(lineas)
+	print (len(listadenoticias))
 	for matriz in listadenoticias:
 		for a1 in matriz:
 			listadengrmas.append(a1)
+	
 	lista_nueva=[]
 	for indice in listadengrmas:
 		if indice not in lista_nueva:
@@ -115,7 +101,7 @@ def main():
 		topicos.append(linea)
 	contador=0;
 	cuentalinea=1
-	
+
 	for noticia in listadenoticias:
 		archivo6.write(str(cuentalinea))
 		archivo6.write(',')
