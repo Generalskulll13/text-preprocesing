@@ -7,10 +7,7 @@ from nltk import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
 from nltk.util import ngrams
 from nltk.stem.snowball import SnowballStemmer
-lemmaDiccionario = {}
 nlp = spacy.load('es_core_news_md')
-def lemmatize(word):
-   return lemmaDiccionario.get(word, word + u'')
    
 def lemmatize_words(words):
 	
@@ -86,12 +83,6 @@ def ngram(words,n):
 archivo=open("Flujo_experimental_1/LLNcooperativa.txt",'r')
 archivo6=open('Flujo_experimental_1/dataset.csv','w')
 archivo7=open('Flujo_experimental_1/listadepalabras.txt','w')
-with open('Flujo_experimental_1/diccionariolemmatization.txt', 'rb') as fichero:
-	datos = (fichero.read().decode('utf8').replace(u'\r', u'').split(u'\n'))
-	datos = ([avance.split(u'\t') for avance in datos])
-for avance in datos:
-   if len(avance) >1:
-      lemmaDiccionario[avance[1]] = avance[0]
 listadenoticias = []
 listadengrmas=[]
 
@@ -104,7 +95,7 @@ for linea in archivo.readlines():
 	lineas= stem_words(lineas)
 	#lineas= ngram(lineas,3)
 	listadenoticias.append(lineas)
-
+	print("estoy produciendo")
 for matriz in listadenoticias:
 	for a1 in matriz:
 		listadengrmas.append(a1)
