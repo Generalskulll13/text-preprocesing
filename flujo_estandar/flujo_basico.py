@@ -80,9 +80,9 @@ def normalize(words):
 def ngram(words,n):
 	output = list(ngrams(words, n))
 	return output
-archivo=open("Flujo_experimental_1/LLNcooperativa.txt",'r')
-archivo6=open('Flujo_experimental_1/dataset.csv','w')
-archivo7=open('Flujo_experimental_1/listadepalabras.txt','w')
+archivo=open("flujo_estandar/LLNcooperativa.txt",'r')
+archivo6=open('flujo_estandar/dataset.csv','w')
+archivo7=open('flujo_estandar/listadepalabras.txt','w')
 listadenoticias = []
 listadengrmas=[]
 cuentaproduccion=0
@@ -107,7 +107,7 @@ for indice in listadengrmas:
 for palabra in lista_nueva:
 	archivo7.write(palabra)
 	archivo7.write('\n')
-topico=open("Flujo_experimental_1/topicos.txt",'r')
+topico=open("flujo_estandar/topicos.txt",'r')
 topicos=[]
 for linea in topico.readlines():
 	topicos.append(linea)
