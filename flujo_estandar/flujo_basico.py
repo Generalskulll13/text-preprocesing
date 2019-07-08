@@ -106,6 +106,7 @@ def main():
 		thread1.start()
 		nhebra=nhebra+1
 		threads.append(thread1)
+		break
 	for t in threads:
    		t.join()
 
