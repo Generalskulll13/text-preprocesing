@@ -99,6 +99,7 @@ def main():
 	contador=0
 	nhebra=0
 	threads = []
+	print("hola")
 	for linea in archivo.readlines():
 		lineas= tokenize(linea)
 		lineas= normalize(lineas)
