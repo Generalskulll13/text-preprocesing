@@ -17,7 +17,6 @@ def lemmatize_words(words):
 	new_words=[]
 	for token in nlp(text1):
 		new_words.append(token.lemma_)
-	print(str (new_words))
 	return new_words
 def tokenize(text):
 	words = nltk.word_tokenize(text)
@@ -80,7 +79,6 @@ def main():
 		lineas= lemmatize_words(lineas)
 		lineas= stem_words(lineas)
 		listadenoticias.append(lineas)
-	print (len(listadenoticias))
 	for matriz in listadenoticias:
 		for a1 in matriz:
 			listadengrmas.append(a1)
