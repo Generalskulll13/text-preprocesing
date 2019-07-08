@@ -75,11 +75,12 @@ class myThread (threading.Thread):
     	# Free lock to release next thread
 
 def multithread(linea,nhebra):
+	global cuentahebra
 	lineas= lemmatize_words(linea)
 	lineas= stem_words(lineas)
 	print("entre a la hebra")
 	#lineas= ngram(lineas,3)
-	global cuentahebra
+	
 	while nhebra!= cuentahebra:
 		print(str(nhebra))
 		print(str(cuentahebra))
@@ -99,11 +100,11 @@ def main():
 	contador=0
 	nhebra=0
 	threads = []
-	print("hola")
 	for linea in archivo.readlines():
 		lineas= tokenize(linea)
 		lineas= normalize(lineas)
 		lineas = remove_stopwords(lineas)
+		print("voy a crear la tread")
 		thread1 = myThread(1, "Thread", 1,lineas,nhebra)
 		thread1.start()
 		nhebra=nhebra+1
