@@ -95,7 +95,7 @@ def main():
 		lineas = remove_stopwords(lineas)
 		lineas= lemmatize_words(linea)
 		lineas= stem_words(lineas)
-		print("estoy haciendo algo")
+
 	for matriz in listadenoticias:
 		for a1 in matriz:
 			listadengrmas.append(a1)
