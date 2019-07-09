@@ -107,6 +107,7 @@ for avance in datos:
 listadenoticias = []
 listadengrmas=[]
 diccionarios=construye_diccionario(archivo8)
+numero=0
 for linea in archivo.readlines():
 	lineas= tokenize(linea,diccionarios)
 	salida2=identificar_stopwords(lineas)
@@ -120,7 +121,8 @@ for linea in archivo.readlines():
 	archivo2.write('\n')
 	archivo3.write(str(salida2))
 	archivo3.write('\n')
-
+	print(str(numero))
+	numero=numero+1
 for matriz in listadenoticias:
 	for a1 in matriz:
 		listadengrmas.append(a1)
