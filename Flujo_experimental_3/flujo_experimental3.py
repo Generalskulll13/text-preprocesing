@@ -125,17 +125,20 @@ for linea in archivo.readlines():
 	print(str(numero))
 	numero=numero+1
 for matriz in listadenoticias:
+	print("estoyjuntando")
 	for a1 in matriz:
 		listadengrmas.append(a1)
 		archivo4.write(str(a1))
 		archivo4.write('\n')
 lista_nueva = []
 for indice in listadengrmas:
+    print("estoy filtrando")
     if indice not in lista_nueva:
         lista_nueva.append(indice)
     	
 archivo5.write(str(listadengrmas))
 for palabra in lista_nueva:
+	print("estoyalmacenando")
 	archivo7.write(palabra)
 	archivo7.write('\n')
 topico=open("Flujo_experimental_3/topicos.txt",'r')
