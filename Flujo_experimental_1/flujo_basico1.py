@@ -37,6 +37,7 @@ def construye_diccionario(file):
 
 def tokenize(text,diccionario):
 	texto2=text
+	
 	for palabra in diccionario:
 		texto2=texto2.replace(palabra[0],palabra[1])
 	words = nltk.word_tokenize(texto2)
@@ -54,6 +55,7 @@ def remove_punctuation(words):
     new_words = []
     for word in words:
         new_word = re.sub(r'[^\w\s]', '', word)
+        new_word=new_word.replace('_','')
         if new_word != '':
             new_words.append(new_word)
     return new_words
