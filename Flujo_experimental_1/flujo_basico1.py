@@ -117,7 +117,7 @@ for linea in archivo.readlines():
 	lineas = remove_stopwords(lineas)
 	lineas= lemmatize_words(lineas,archivo1)
 	lineas= stem_words(lineas)
-	#lineas= ngram(lineas,3)
+	lineas= ngram(lineas,2)
 	listadenoticias.append(lineas)
 	archivo2.write(str(lineas))
 	archivo2.write('\n')
