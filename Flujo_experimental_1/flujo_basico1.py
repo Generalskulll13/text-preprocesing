@@ -146,6 +146,7 @@ for linea in topico.readlines():
 contador=0;
 cuentalinea=1
 for noticia in listadenoticias:
+	print("estoyescribiendo")
 	archivo6.write(str(cuentalinea))
 	archivo6.write(',')
 	for ngr in lista_nueva:
