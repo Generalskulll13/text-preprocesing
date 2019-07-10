@@ -20,8 +20,8 @@ from sklearn.metrics import multilabel_confusion_matrix
 # Dataset Path
 DATASET_PATH = "../Flujo_experimental_1/dataset.csv"
 
-def tokenize(text):
-    words = nltk.word_tokenize(text)
+def limpiasaltolinea(text):
+    words = text.replace('\n','')
     return words
 
 def main():
@@ -29,8 +29,8 @@ def main():
     archivo1=open("Flujo_experimental_1/listadepalabras.txt",'r')
     archivo2=open("Flujo_experimental_1/resultados.txt",'w')
     for linea in archivo1.readlines():
-        text_data_headers.append(tokenize(linea)[0])
-
+        text_data_headers.append(limpiasaltolinea(linea))
+        print("estoy leyendo")
     
 
     text_data = pd.read_csv('Flujo_experimental_1/dataset.csv', names=text_data_headers)

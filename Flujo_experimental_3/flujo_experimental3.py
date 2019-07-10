@@ -139,7 +139,7 @@ for indice in listadengrmas:
 archivo5.write(str(listadengrmas))
 for palabra in lista_nueva:
 	print("estoyalmacenando")
-	archivo7.write(palabra)
+	archivo7.write(str(palabra))
 	archivo7.write('\n')
 topico=open("Flujo_experimental_3/topicos.txt",'r')
 topicos=[]
