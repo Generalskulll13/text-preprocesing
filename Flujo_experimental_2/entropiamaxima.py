@@ -29,9 +29,7 @@ def main():
     archivo1=open("Flujo_experimental_2/listadepalabras.txt",'r')
     archivo2=open("Flujo_experimental_2/resultados.txt",'w')
     for linea in archivo1.readlines():
-        text_data_headers.append(limpiasaltolinea(linea))
-        print("estoy leyendo")
-    
+        text_data_headers.append(limpiasaltolinea(linea))    
 
     text_data = pd.read_csv('Flujo_experimental_2/dataset.csv', names=text_data_headers)
     archivo2.write("Numero de observaciones :: "+ str(len(text_data.index)))

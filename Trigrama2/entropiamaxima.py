@@ -30,7 +30,6 @@ def main():
     archivo2=open("Trigrama2/resultados.txt",'w')
     for linea in archivo1.readlines():
         text_data_headers.append(limpiasaltolinea(linea))
-        print("estoy leyendo")
     
 
     text_data = pd.read_csv('Trigrama2/dataset.csv', names=text_data_headers)
