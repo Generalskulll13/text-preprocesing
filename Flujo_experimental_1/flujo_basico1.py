@@ -125,23 +125,43 @@ for linea in archivo.readlines():
 	archivo3.write('\n')
 	print(str(numero))
 	numero=numero+1
+escritor=0
 for matriz in listadenoticias:
-	print("estoyjuntando")
+	if escritor==3000:
+		print("estoyjuntando")
+		escritor=0
 	for a1 in matriz:
 		listadengrmas.append(a1)
 		archivo4.write(str(a1))
 		archivo4.write('\n')
+	escritor=escritor+1
 lista_nueva = []
 for indice in listadengrmas:
-    print("estoy filtrando")
-    if indice not in lista_nueva:
-        lista_nueva.append(indice)
-    	
+	if escritor==3000:
+	    print("estoy filtrando")
+	    escritor=0
+	if indice not in lista_nueva:
+		lista_nueva.append(indice)
+	escritor=escritor+1	
 archivo5.write(str(listadengrmas))
+encontrar=0
+ngramas=[]
 for palabra in lista_nueva:
-	print("estoyalmacenando")
-	archivo7.write(str(palabra))
-	archivo7.write('\n')
+	for palabra2 in listadengrmas:
+		if escritor==3000:	
+			print("estoyalmacenando")
+			escritor=0
+		if palabra == palabra2:
+			encontrar=encontrar+1
+			if encontrar >= 2:
+				ngramas.append(palabra)
+				archivo7.write(str(palabra))
+				archivo7.write('\n')
+				break
+		escritor=escritor+1	
+		
+	encontrar=0
+
 topico=open("Flujo_experimental_1/topicos.txt",'r')
 topicos=[]
 for linea in topico.readlines():
@@ -152,7 +172,7 @@ for noticia in listadenoticias:
 	print("estoyescribiendo")
 	archivo6.write(str(cuentalinea))
 	archivo6.write(',')
-	for ngr in lista_nueva:
+	for ngr in ngramas:
 		if ngr in noticia:
 			archivo6.write('1,')
 		else:

@@ -37,6 +37,7 @@ def construye_diccionario(file):
 
 def tokenize(text,diccionario):
 	texto2=text
+	
 	for palabra in diccionario:
 		texto2=texto2.replace(palabra[0],palabra[1])
 	words = nltk.word_tokenize(texto2)
@@ -92,7 +93,7 @@ def ngram(words,n):
 	return output
 archivo=open("Flujo_experimental_3/LLNcooperativa.txt",'r')
 archivo1=open("Flujo_experimental_3/lema1.txt",'w')
-archivo2=open('Flujo_experimental_3/prueba_final.txt','w')
+archivo2=open('Flujo_experimental_3/prueba final.txt','w')
 archivo3=open('Flujo_experimental_3/stopwords_final.txt','w')
 archivo4=open('Flujo_experimental_3/prueba_de_matriz.txt','w')
 archivo5=open('Flujo_experimental_3/listadengrmas.txt','w')
@@ -116,7 +117,7 @@ for linea in archivo.readlines():
 	lineas = remove_stopwords(lineas)
 	lineas= lemmatize_words(lineas,archivo1)
 	#lineas= stem_words(lineas)
-	lineas= ngram(lineas,2)
+	lineas= ngram(lineas,3)
 	listadenoticias.append(lineas)
 	archivo2.write(str(lineas))
 	archivo2.write('\n')
@@ -124,23 +125,43 @@ for linea in archivo.readlines():
 	archivo3.write('\n')
 	print(str(numero))
 	numero=numero+1
+escritor=0
 for matriz in listadenoticias:
-	print("estoyjuntando")
+	if escritor==1000:
+		print("estoyjuntando")
+		escritor=0
 	for a1 in matriz:
 		listadengrmas.append(a1)
 		archivo4.write(str(a1))
 		archivo4.write('\n')
+	escritor=escritor+1
 lista_nueva = []
 for indice in listadengrmas:
-    print("estoy filtrando")
-    if indice not in lista_nueva:
-        lista_nueva.append(indice)
-    	
+	if escritor==1000:
+	    print("estoy filtrando")
+	    escritor=0
+	if indice not in lista_nueva:
+		lista_nueva.append(indice)
+	escritor=escritor+1	
 archivo5.write(str(listadengrmas))
+encontrar=0
+ngramas=[]
 for palabra in lista_nueva:
-	print("estoyalmacenando")
-	archivo7.write(str(palabra))
-	archivo7.write('\n')
+	for palabra2 in listadengrmas:
+		if escritor==1000:	
+			print("estoyalmacenando")
+			escritor=0
+		if palabra == palabra2:
+			encontrar=encontrar+1
+			if encontrar >= 2:
+				ngramas.append(palabra)
+				archivo7.write(str(palabra))
+				archivo7.write('\n')
+				break
+		escritor=escritor+1	
+		
+	encontrar=0
+
 topico=open("Flujo_experimental_3/topicos.txt",'r')
 topicos=[]
 for linea in topico.readlines():
@@ -151,7 +172,7 @@ for noticia in listadenoticias:
 	print("estoyescribiendo")
 	archivo6.write(str(cuentalinea))
 	archivo6.write(',')
-	for ngr in lista_nueva:
+	for ngr in ngramas:
 		if ngr in noticia:
 			archivo6.write('1,')
 		else:
