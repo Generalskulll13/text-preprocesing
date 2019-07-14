@@ -148,7 +148,7 @@ encontrar=0
 ngramas=[]
 for palabra in lista_nueva:
 	for palabra2 in listadengrmas:
-		if escritor==20000:	
+		if escritor==40000:	
 			print("estoyalmacenando")
 			escritor=0
 		if palabra == palabra2:
@@ -161,7 +161,7 @@ for palabra in lista_nueva:
 		escritor=escritor+1	
 		
 	encontrar=0
-
+print ("entre a escribir el .csv")
 topico=open("Flujo_experimental_1/topicos.txt",'r')
 topicos=[]
 for linea in topico.readlines():
@@ -169,7 +169,7 @@ for linea in topico.readlines():
 contador=0;
 cuentalinea=1
 for noticia in listadenoticias:
-	#print("estoyescribiendo")
+	print("estoyescribiendo")
 	archivo6.write(str(cuentalinea))
 	archivo6.write(',')
 	for ngr in ngramas:
