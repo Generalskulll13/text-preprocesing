@@ -137,7 +137,7 @@ for matriz in listadenoticias:
 	escritor=escritor+1
 lista_nueva = []
 for indice in listadengrmas:
-	if escritor==3000:
+	if escritor==30000:
 	    print("estoy filtrando")
 	    escritor=0
 	if indice not in lista_nueva:
@@ -148,7 +148,7 @@ encontrar=0
 ngramas=[]
 for palabra in lista_nueva:
 	for palabra2 in listadengrmas:
-		if escritor==40000:	
+		if escritor==80000:	
 			print("estoyalmacenando")
 			escritor=0
 		if palabra == palabra2:
@@ -169,6 +169,9 @@ for linea in topico.readlines():
 contador=0;
 cuentalinea=1
 for noticia in listadenoticias:
+	if escritor==80000:	
+		print("estoyescribiendo")
+		escritor=0
 	print("estoyescribiendo")
 	archivo6.write(str(cuentalinea))
 	archivo6.write(',')
