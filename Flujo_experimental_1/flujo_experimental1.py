@@ -117,7 +117,7 @@ for linea in archivo.readlines():
 	salida2=identificar_stopwords(lineas)
 	lineas= normalize(lineas)
 	lineas = remove_stopwords(lineas)
-	#lineas= lemmatize_words(lineas,archivo1)
+	lineas= lemmatize_words(lineas,archivo1)
 	lineas= stem_words(lineas)
 	lineas= ngram(lineas,2)
 	listadenoticias.append(lineas)
@@ -145,6 +145,9 @@ for bigrama in ngramas:
 		bigramasunicos.append(bigrama)
 		archivo7.write(str(bigrama))
 		archivo7.write('\n')
+
+
+
 archivo7.close()
 archivo5.write(str(listadengrmas))
 topico=open("topicos.txt",'r')
