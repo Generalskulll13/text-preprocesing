@@ -90,16 +90,16 @@ def normalize(words):
 def ngram(words,n):
 	output = list(ngrams(words, n))
 	return output
-archivo=open("Flujo_experimental_2/LLNcooperativa.txt",'r')
-archivo1=open("Flujo_experimental_2/lema1.txt",'w')
-archivo2=open('Flujo_experimental_2/prueba_final.txt','w')
-archivo3=open('Flujo_experimental_2/stopwords_final.txt','w')
-archivo4=open('Flujo_experimental_2/prueba_de_matriz.txt','w')
-archivo5=open('Flujo_experimental_2/listadengrmas.txt','w')
-archivo6=open('Flujo_experimental_2/dataset.csv','w')
-archivo7=open('Flujo_experimental_2/listadepalabras.txt','w')
-archivo8=open("Flujo_experimental_2/diccionarioespañol.txt",'r')
-with open('Flujo_experimental_2/diccionariolemmatization.txt', 'rb') as fichero:
+archivo=open("LLNcooperativa.txt",'r')
+archivo1=open("lema1.txt",'w')
+archivo2=open('prueba_final.txt','w')
+archivo3=open('stopwords_final.txt','w')
+archivo4=open('prueba_de_matriz.txt','w')
+archivo5=open('listadengrmas.txt','w')
+archivo6=open('dataset.csv','w')
+archivo7=open('listadepalabras.txt','w')
+archivo8=open("diccionarioespañol.txt",'r')
+with open('diccionariolemmatization.txt', 'rb') as fichero:
 	datos = (fichero.read().decode('utf8').replace(u'\r', u'').split(u'\n'))
 	datos = ([avance.split(u'\t') for avance in datos])
 for avance in datos:
@@ -147,7 +147,7 @@ encontrar=0
 ngramas=[]
 for palabra in lista_nueva:
 	for palabra2 in listadengrmas:
-		if escritor==80000:	
+		if escritor==400000:	
 			print("estoyalmacenando")
 			escritor=0
 		if palabra == palabra2:
@@ -160,14 +160,14 @@ for palabra in lista_nueva:
 		escritor=escritor+1	
 		
 	encontrar=0
-topico=open("Flujo_experimental_2/topicos.txt",'r')
+topico=open("topicos.txt",'r')
 topicos=[]
 for linea in topico.readlines():
 	topicos.append(linea)
 contador=0;
 cuentalinea=1
 for noticia in listadenoticias:
-	if escritor==80000:
+	if escritor==400000:
 		print("estoyescribiendo")
 		escritor=0
 	archivo6.write(str(cuentalinea))
