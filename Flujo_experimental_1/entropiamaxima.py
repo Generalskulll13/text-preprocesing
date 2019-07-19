@@ -18,7 +18,7 @@ from sklearn.metrics import multilabel_confusion_matrix
 #py.sign_in('Your_ployly_username', 'API_key')
 
 # Dataset Path
-DATASET_PATH = "../Flujo_experimental_1/dataset.csv"
+DATASET_PATH = "../dataset.csv"
 
 def limpiasaltolinea(text):
     words = text.replace('\n','')
@@ -26,14 +26,14 @@ def limpiasaltolinea(text):
 
 def main():
     text_data_headers = []
-    archivo1=open("Flujo_experimental_1/listadepalabras.txt",'r')
-    archivo2=open("Flujo_experimental_1/resultados.txt",'w')
+    archivo1=open("listadepalabras.txt",'r')
+    archivo2=open("resultados.txt",'w')
     print("hola estoy haciendo algo")
     for linea in archivo1.readlines():
         text_data_headers.append(limpiasaltolinea(linea))
     
 
-    text_data = pd.read_csv('Flujo_experimental_1/dataset.csv', names=text_data_headers)
+    text_data = pd.read_csv('dataset.csv', names=text_data_headers)
     archivo2.write("Numero de observaciones :: "+ str(len(text_data.index)))
     archivo2.write('\n')
     archivo2.write("Numbero de columnas :: "+ str(len(text_data.columns)))
